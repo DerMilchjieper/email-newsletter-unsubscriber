@@ -17,28 +17,30 @@ An automated Python tool designed to scan your email inboxes (Gmail, GMX, Web.de
 
 ---
 
-## 🛠️ Quick Start
+## 🚀 Quick Start & Launchers
 
-### 1. Installation
+### Easy One-Click Launchers
 
-Clone this repository:
-```bash
-git clone https://github.com/your-username/email-newsletter-unsubscriber.git
-cd email-newsletter-unsubscriber
-```
+We provide ready-to-use launcher scripts for all platforms:
+
+- **Windows Batch**: Double-click `run.bat` or execute `.\run.bat`
+- **Windows PowerShell**: Right-click `run.ps1` -> *Run with PowerShell* or `.\run.ps1`
+- **Linux / macOS Bash**: Run `./run.sh`
+
+The launcher automatically checks for `.env`, installs required Python dependencies, and provides an interactive menu (Scan, Unsubscribe, or Both).
+
+---
+
+### Manual CLI Usage
+
+#### Step 1: Installation & Configuration
 
 Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-### 2. Configuration
-
-Create a `.env` file in the root directory (or edit the provided template):
-
-#### For GMX / Web.de / Standard IMAP:
+Create `.env` file with your email credentials:
 ```env
 GMX_ADDRESS=your_email@gmx.net
 GMX_PASSWORD=your_gmx_password
