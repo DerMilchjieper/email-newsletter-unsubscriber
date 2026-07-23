@@ -127,8 +127,41 @@ def cmd_unsubscribe(args):
 
     # Summary
     successes = sum(1 for r in results if r['status'] == 'SUCCESS')
+    failed_items = [r for r in results if r['status'] == 'FAILED']
+    
     print(f"\n[Summary] Erfolgreich von {successes}/{len(selected_items)} Newslettern abgemeldet.")
     
+    # Output list of failed unsubscribes with URLs if any exist
+    if failed_items:
+        print("\n" + "=" * 60)
+        print("⚠️  NICHT AUTOMATISCH ABGEMELDET (MANUELLE ABMELDUNG NÖTIG):")
+        print("=" * 60)
+        
+        failed_report_file = 'failed_unsubscribes.md'
+        with open(failed_report_file, 'w', encoding='utf-8') as f_out:
+            f_out.write("# Manuelle Abmeldeliste\n\n")
+            f_out.write("Folgende Newsletter konnten nicht automatisch per Ein-Klick abgemeldet werden. Klicke auf die Links, um dich manuell abzumelden:\n\n")
+            f_out.write("| # | Absender / Name | Abmelde-Link |\n")
+            f_out.write("| :---: | :--- | :--- |\n")
+            
+            for idx, item in enumerate(failed_items, start=1):
+                name = item.get('sender_name', item.get('sender', 'Unknown'))
+                url = item.get('url') or 'Kein Link in E-Mail gefunden'
+                
+                # Format short display URL
+                short_url_display = url
+                if len(url) > 60:
+                    short_url_display = url[:57] + "..."
+                
+                link_md = f"[{short_url_display}]({url})" if url.startswith('http') else url
+                f_out.write(f"| {idx} | `{name}` | {link_md} |\n")
+                
+                print(f"{idx}. {name}")
+                print(f"   Link: {url}\n")
+                
+        print("=" * 60)
+        print(f"[Output] Übersicht der nicht abgemeldeten Newsletter gespeichert in '{failed_report_file}'.")
+
     with open('unsubscribe_results.json', 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     print("[Output] Ausführlicher Protokollbericht in 'unsubscribe_results.json' gespeichert.")

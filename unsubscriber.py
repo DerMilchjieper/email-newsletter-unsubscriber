@@ -9,15 +9,18 @@ class Unsubscriber:
     def unsubscribe(self, newsletter_item: Dict[str, Any]) -> Dict[str, Any]:
         """Attempt to unsubscribe using HTTPS RFC 8058, standard HTTP, or mailto."""
         sender = newsletter_item.get('sender_email', 'Unknown')
+        sender_name = newsletter_item.get('sender_name_raw', sender)
         https_link = newsletter_item.get('unsubscribe_https')
         mailto_link = newsletter_item.get('unsubscribe_mailto')
         supports_one_click = newsletter_item.get('supports_one_click', False)
 
         result = {
             'sender': sender,
+            'sender_name': sender_name,
             'status': 'FAILED',
             'method_used': None,
-            'details': ''
+            'details': '',
+            'url': https_link or mailto_link
         }
 
         # Method 1: RFC 8058 One-Click HTTPS POST
@@ -40,7 +43,6 @@ class Unsubscriber:
         # Method 2: Standard HTTPS GET/POST
         if https_link:
             try:
-                # Try GET request first
                 resp = requests.get(https_link, timeout=10, headers={'User-Agent': 'Mozilla/5.0'})
                 if resp.status_code == 200:
                     result['status'] = 'SUCCESS'
@@ -58,7 +60,6 @@ class Unsubscriber:
                 query_params = urllib.parse.parse_qs(parsed_mailto.query)
                 subject = query_params.get('subject', ['unsubscribe'])[0]
                 
-                # Send email via Gmail API
                 import base64
                 from email.mime.text import MIMEText
                 
@@ -77,6 +78,6 @@ class Unsubscriber:
                 result['details'] += f"Mailto send failed: {str(e)}; "
 
         if not result['details']:
-            result['details'] = 'No valid List-Unsubscribe URL or mailto link found.'
+            result['details'] = 'Kein direkter Ein-Klick-Header vorhanden (Manuelle Abmeldung erforderlich)'
         
         return result

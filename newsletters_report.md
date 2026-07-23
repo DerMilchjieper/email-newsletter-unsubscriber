@@ -1,6 +1,6 @@
 # Gmail Newsletter Discovery Report
 
-Total Newsletters / Senders Found: **70**
+Total Newsletters / Senders Found: **71**
 
 Review the list below. To unsubscribe from specific senders, set `"selected": true` in `newsletters_found.json` or run `python main.py unsubscribe --all` to process all.
 
@@ -26,7 +26,6 @@ Review the list below. To unsubscribe from specific senders, set `"selected": tr
 | [ ] | `"Kreissi" <kreissi@haptic-trading.de>` | 3 | ✅ | 6 Verluste in Folge – und trotzdem profitabel |
 | [ ] | `creditolo <bitte_nicht_antworten@noreply.creditolo.de>` | 3 | ⚠️ Mailto | Es gibt Neuigkeiten zu Ihrer Kreditanfrage |
 | [ ] | `Neurawork <info@neurawork.de>` | 3 | ✅ | Was ist eigentlich mit OpenClaw? |
-| [ ] | `"Sixty8" <contact@sixty8.de>` | 3 | ✅ | Your reward is about to expire! ⏳ |
 | [ ] | `"Engelmann Software" <news@engelmann.com>` | 3 | ✅ | 🎬 Noch mehr MovieJack: Zwei neue Editionen sind da |
 | [ ] | `"LOTTO24" <info@news.lotto24.de>` | 3 | ✅ | 50 Mio. Euro: Wer knackt den LOTTO-Jackpot? |
 | [ ] | `creditolo <mail@creditolo.de>` | 3 | ⚠️ Mailto | Neuigkeiten zu Ihrer Kreditanfrage - Kundennummer 11722242 |
@@ -40,11 +39,13 @@ Review the list below. To unsubscribe from specific senders, set `"selected": tr
 | [ ] | `GMX Magazin <mailings@mailings.gmx.net>` | 2 | ⚠️ Mailto | Zenkert Georg-Michael, NEU: Ihr 50 GB Handytarif für dauerhaft nur 9,99 € mtl.¹ |
 | [ ] | `Duratio Newsletter <noreply@duratio-news.de>` | 2 | ⚠️ Mailto | Georg Michael, jetzt ist der richtige Zeitpunkt füreinen finanziellen Neustart |
 | [ ] | `" Lou von LOVOO " <hello@hello.lovoo.com>` | 2 | ⚠️ Mailto |   Hilf uns, LOVOO besser zu machen – dein Feedback zählt  |
+| [ ] | `"Sixty8" <contact@sixty8.de>` | 2 | ✅ | Your reward is about to expire! ⏳ |
 | [ ] | `IBKR FYI <donotreply@interactivebrokers.com>` | 2 | ✅ | FYI: Changes in Analyst Ratings |
 | [ ] | `"Steuerbot | News" <mail@news.steuerbot.com>` | 2 | ✅ | 🗓️ Block dir 20 Minuten |
 | [ ] | `credicom GmbH <info@credicom.de>` | 2 | ✅ | Ihre Kreditanfrage - credicom.de |
 | [ ] | `Admirals <germany@admiralmarkets.com>` | 2 | ⚠️ Mailto | Your demo account will expire in 7 days! |
 | [ ] | `Sumsub ID <no-reply@sumsub.com>` | 2 | ⚠️ Mailto | Welcome to Sumsub ID - Finish setup to unlock faster verifications |
+| [ ] | `LOTTO24 <service@lotto24.de>` | 1 | ✅ | Ihre Benachrichtigungen |
 | [ ] | `LinkedIn <messages-noreply@linkedin.com>` | 1 | ✅ | Jens O. Brunner und William Grierson stellen ein |
 | [ ] | `geeksoutfit <support@geeksoutfit.com>` | 1 | ✅ | ⛱️Fan Favourite Shirt Collection: 25% Off Inside! |
 | [ ] | `Microsoft account team
