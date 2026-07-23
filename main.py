@@ -5,6 +5,13 @@ import argparse
 from scanner import GmailApiScanner, ImapScanner
 from unsubscriber import Unsubscriber
 
+# Force UTF-8 stdout encoding for Windows console compatibility
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
 # Try loading environment variables from .env file
 try:
     from dotenv import load_dotenv
@@ -134,7 +141,7 @@ def cmd_unsubscribe(args):
     # Output list of failed unsubscribes with URLs if any exist
     if failed_items:
         print("\n" + "=" * 60)
-        print("⚠️  NICHT AUTOMATISCH ABGEMELDET (MANUELLE ABMELDUNG NÖTIG):")
+        print("[!] NICHT AUTOMATISCH ABGEMELDET (MANUELLE ABMELDUNG NÖTIG):")
         print("=" * 60)
         
         failed_report_file = 'failed_unsubscribes.md'
