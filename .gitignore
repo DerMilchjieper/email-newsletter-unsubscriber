@@ -1,0 +1,16 @@
+# Environment & Credentials
+.env
+credentials.json
+token.json
+newsletters_found.json
+unsubscribe_results.json
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.venv/
+env/
+venv/
